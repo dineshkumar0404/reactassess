@@ -6,24 +6,13 @@ class Data extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      formValues: [{ quantity: '', price: '', total: '' }],
-      total: null,
+      formValues: [{}],
     };
-    // this.handleSubmit = this.handleSubmit.bind(this)
-  }
-
-  handleChange(i, e) {
-    let formValues = this.state.formValues;
-    formValues[i][e.target.name] = e.target.value;
-    this.setState({ formValues });
   }
 
   addFormFields() {
     this.setState({
-      formValues: [
-        ...this.state.formValues,
-        { quantity: '', price: '', total: '' },
-      ],
+      formValues: [...this.state.formValues, {}],
     });
   }
 
@@ -33,22 +22,10 @@ class Data extends React.Component {
     this.setState({ formValues });
   }
 
-  //   handleSubmit(event) {
-  //     event.preventDefault();
-  //     const sum = this.state.formValues.reduce((accumulator, object) => {
-  //       return accumulator + object.total;
-  //     }, 0);
-  //     this.setState({ total: sum })
-  //     this.settimer();
-  //   }
-
   render() {
     return (
       <>
-        <div
-          className="container"
-          style={{ padding: '50px', }}
-        >
+        <div className="container" style={{ padding: '50px' }}>
           <div style={{ backgroundColor: 'black' }}>
             <div class="row align-items-start">
               <div class="col" style={{ color: 'white', textAlign: 'center' }}>
@@ -115,7 +92,7 @@ class Data extends React.Component {
                     className="button remove"
                     onClick={() => this.removeFormFields(index)}
                   >
-                    X
+                    Delete
                   </button>
                 ) : null}
                 <button
@@ -123,14 +100,14 @@ class Data extends React.Component {
                   style={{ marginLeft: '20px' }}
                   onClick={() => this.addFormFields()}
                 >
-                  +
+                  Add
                 </button>
               </div>
             ))}
             <br />
             <div className="button-section">
               <button type="button" onClick={() => this.addFormFields()}>
-                +
+                Add
               </button>
             </div>
           </form>
